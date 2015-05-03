@@ -4,7 +4,7 @@ namespace Bangpound\Bundle\TwitterStreamingBundle\Stream;
 
 use Bangpound\PhirehoseBundle\Stream\BasicStream;
 
-class RshiefStream extends BasicStream
+class DoctrineStream extends BasicStream
 {
 
     public function checkFilterPredicates()
