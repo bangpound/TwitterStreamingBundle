@@ -2,7 +2,7 @@ parameters:
     bangpound_twitter_streaming.db.table_prefix: twitter_streaming__
     bangpound_twitter_streaming.consumer.notification.class: Bangpound\Bundle\TwitterStreamingBundle\Consumer\PhirehoseConsumer
     bangpound_twitter_streaming.consumer.notification.max_unit_of_work_size: 100
-    bangpound_twitter_streaming.stream.class: Bangpound\Bundle\TwitterStreamingBundle\Stream\RshiefStream
+    bangpound_twitter_streaming.stream.class: Bangpound\Bundle\TwitterStreamingBundle\Stream\DoctrineStream
     bangpound_twitter_streaming.stream.notify.class: Bangpound\Bundle\TwitterStreamingBundle\Subscriber\StreamNotifySubscriber
     bangpound_twitter_streaming.stream.logger.class: Bangpound\Bundle\TwitterStreamingBundle\Subscriber\StreamLoggerSubscriber
     bangpound_twitter_streaming.persistent_atom_entry.class: Bangpound\Bundle\TwitterStreamingBundle\CouchDocument\AtomEntry
