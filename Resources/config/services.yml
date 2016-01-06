@@ -31,25 +31,25 @@ services:
 
     bangpound_twitter_streaming.consumer.notification:
         class: %bangpound_twitter_streaming.consumer.notification.class%
-        arguments: [ @doctrine_couchdb.odm.document_manager, @jms_serializer, %bangpound_twitter_streaming.persistent_atom_entry.class% ]
+        arguments: [ "@doctrine_couchdb.odm.document_manager", "@jms_serializer", %bangpound_twitter_streaming.persistent_atom_entry.class% ]
         calls:
-            - [ setLogger, [ @logger ] ]
+            - [ setLogger, [ "@logger" ] ]
 
     bangpound_twitter_streaming.stream.notify:
         class: %bangpound_twitter_streaming.stream.notify.class%
-        arguments: [ @old_sound_rabbit_mq.twitter_producer, %bangpound_twitter_streaming.stream.notify.type% ]
+        arguments: [ "@old_sound_rabbit_mq.twitter_producer", %bangpound_twitter_streaming.stream.notify.type% ]
         tags:
             - { name: bangpound_phirehose.event_subscriber }
 
     bangpound_twitter_streaming.stream.logger:
         class: %bangpound_twitter_streaming.stream.logger.class%
-        arguments: [ '@logger', '@database_connection' ]
+        arguments: [ "@logger", "@database_connection" ]
         tags:
             - { name: bangpound_phirehose.event_subscriber }
             - { name: monolog.logger, channel: twitter_data }
 
     bangpound_twitter_streaming.listener.flush:
         class: %bangpound_twitter_streaming.listener.flush.class%
-        arguments: [ @doctrine_couchdb.odm.document_manager, 'twitter' ]
+        arguments: [ "@doctrine_couchdb.odm.document_manager", 'twitter' ]
         tags:
             - { name: kernel.event_listener, event: console.terminate, method: onConsoleTerminate }
